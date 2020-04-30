@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "136479570578",
+    "firebase_url": "https://whyu-3fe63.firebaseio.com",
+    "project_id": "whyu-3fe63",
+    "storage_bucket": "whyu-3fe63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136479570578:android:be6fbce14a75c8eb1b044b",
+        "android_client_info": {
+          "package_name": "com.barazeli.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136479570578-9b2srj3ljcncfu43rsf31fd2fj3sqsrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzt4WqYzWY8KnQ0VbzYE4FgLAnOCTXEsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136479570578-9b2srj3ljcncfu43rsf31fd2fj3sqsrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136479570578:android:031b7916b561c96a1b044b",
+        "android_client_info": {
+          "package_name": "com.barazeli.why"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136479570578-9b2srj3ljcncfu43rsf31fd2fj3sqsrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzt4WqYzWY8KnQ0VbzYE4FgLAnOCTXEsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136479570578-9b2srj3ljcncfu43rsf31fd2fj3sqsrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
