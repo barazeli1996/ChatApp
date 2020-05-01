@@ -1,9 +1,6 @@
 package com.barazeli.chatapp
 
-import Adapter.ViewPagerAdapter
-import Fragment.ChatFragment
-import Fragment.FriendsFragment
-import Fragment.StatusFragment
+import Adapter.MyViewPagerAdapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -23,14 +20,10 @@ class HomeActivity : AppCompatActivity() {
         this.setContentView(R.layout.activity_home)
         this.setSupportActionBar(this.toolbar)
         this.supportActionBar?.title="ChatApp"
-        this.toolbar.setTitleTextColor(R.color.white)
-        val viewPagerAdapter=ViewPagerAdapter(this.supportFragmentManager)
-        viewPagerAdapter.addFragment(FriendsFragment(),"Friends")
-        viewPagerAdapter.addFragment(ChatFragment(),"Chat")
-        viewPagerAdapter.addFragment(StatusFragment(),"Status")
-        this.view_pager.adapter=viewPagerAdapter
-        this.tabs.setupWithViewPager(this.view_pager)
-        this.auth = FirebaseAuth.getInstance()
+        val viewPagerAdapter= MyViewPagerAdapter(this.supportFragmentManager)
+        view_pager.adapter=viewPagerAdapter
+        tabs.setupWithViewPager(view_pager)
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -40,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-               when(item?.itemId) {
+               when(item.itemId) {
 
                    R.id.logout -> {
                        this.auth.signOut()
@@ -65,17 +58,6 @@ class HomeActivity : AppCompatActivity() {
                }
         return super.onOptionsItemSelected(item)
     }
-    /*
-    override fun onStart() {
-        super.onStart()
-        if (this.auth != null){
-         val intent=Intent(this,HomeActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK)
-            this.startActivity(intent)
-            this.finish()
 
-        }
-    }
     
-     */
 }

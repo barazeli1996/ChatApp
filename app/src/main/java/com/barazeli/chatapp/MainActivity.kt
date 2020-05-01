@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var auth: FirebaseAuth?=null
-
+    var firebaseUser:FirebaseUser?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,6 +64,17 @@ class MainActivity : AppCompatActivity() {
                 
             }
 
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        firebaseUser=auth?.currentUser
+        if (firebaseUser!=null){
+            val intent=Intent(this,HomeActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
         }
     }
 }

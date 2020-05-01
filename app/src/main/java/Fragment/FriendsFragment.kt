@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.barazeli.chatapp.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -22,16 +20,12 @@ class FriendsFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var manager: LinearLayoutManager? =null
     val userList:ArrayList<User> = ArrayList()
-    // private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
-        val view:View = inflater.inflate(R.layout.fragment_friends, container, false)
-
-        container?.addView(view)
-        return view
+        return inflater.inflate(R.layout.fragment_friends, container, false)
     }
     private fun readUser(){
         auth=FirebaseAuth.getInstance()
@@ -53,12 +47,12 @@ class FriendsFragment : Fragment() {
             }
         })
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         recycler.layoutManager = LinearLayoutManager(context)
         adapterR=RecyclerAdapter()
         readUser()
     }
+    
 }
 

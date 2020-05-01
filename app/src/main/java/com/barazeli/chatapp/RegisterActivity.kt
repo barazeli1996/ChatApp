@@ -36,14 +36,13 @@ class RegisterActivity : AppCompatActivity() {
                 val userID: String? =firebaseUser?.uid
                 val reference:DatabaseReference=FirebaseDatabase.getInstance().getReference("User")
                     .child(userID!!)
-                var map=HashMap<String,String>()
-                userID?.let { map.put("id", it) }
+                val map=HashMap<String,String>()
+                userID.let { map.put("id", it) }
                 map["username"] = username
                 map["imageURL"] = "default"
-                reference?.setValue(map)?.addOnCompleteListener {
-                    task ->
+                reference.setValue(map).addOnCompleteListener {
                     if (task.isSuccessful){
-                        var intent=Intent(this,HomeActivity::class.java)
+                        val intent=Intent(this,HomeActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         finish()

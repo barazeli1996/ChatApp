@@ -22,4 +22,6 @@
     <string name="settings">Settings</string>
     <string name="groups">Groups</string>
     <string name="search">Search</string>
+    <string name="write_your_message">write your message</string>
+    <string name="message">message</string>
 </resources>
