@@ -1,15 +1,15 @@
 package com.barazeli.chatapp
 
-import User
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -26,27 +26,26 @@ class RegisterActivity : AppCompatActivity() {
             if (validateUserName()||validateEmail()||validatePassword()){
                 register(username,email,password)
             }
-
-
         }
-
     }
     private fun register(username:String,email:String,password:String){
         auth?.createUserWithEmailAndPassword(email,password)?.addOnCompleteListener {
             task ->
             if (task.isSuccessful){
-              //   firebaseUser=auth.getCurrentUser();
                 firebaseUser=auth?.currentUser
                 val userID: String? =firebaseUser?.uid
-                val database= userID?.let { Firebase.database.getReference("User").child(it) }
+                val reference:DatabaseReference=FirebaseDatabase.getInstance().getReference("User")
+                    .child(userID!!)
                 var map=HashMap<String,String>()
                 userID?.let { map.put("id", it) }
-                map.put("username",username)
-                map.put("imageURL","default")
-                database?.setValue(map)?.addOnCompleteListener {
+                map["username"] = username
+                map["imageURL"] = "default"
+                reference?.setValue(map)?.addOnCompleteListener {
                     task ->
-                    if (task.isSuccessful()){
-                        startActivity(Intent(this,HomeActivity::class.java))
+                    if (task.isSuccessful){
+                        var intent=Intent(this,HomeActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
                         finish()
                     } else{
                         Toast.makeText(this,"Authentication Failed",Toast.LENGTH_SHORT).show()

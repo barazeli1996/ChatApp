@@ -1,5 +1,6 @@
 package com.barazeli.chatapp
 
+import Model.User
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         register_login.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
+        
     }
     private fun validateEmail() :Boolean {
        val email:String=email_edit.text.toString()

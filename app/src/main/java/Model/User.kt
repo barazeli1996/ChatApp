@@ -1,3 +1,5 @@
+package Model
+
 class User {
     lateinit var id:String
     lateinit var username:String
