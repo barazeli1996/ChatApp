@@ -1,6 +1,6 @@
 package Fragment
 
-import Adapter.RecyclerAdapter
+import Adapter.FriendsAdapter
 import Model.User
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,15 +16,16 @@ import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.fragment_friends.*
 
 class FriendsFragment : Fragment() {
-    private lateinit var adapterR:RecyclerAdapter
+
     private lateinit var auth: FirebaseAuth
-    private var manager: LinearLayoutManager? =null
-    val userList:ArrayList<User> = ArrayList()
-    private lateinit var reference: DatabaseReference
+     private lateinit var adapterFriends:FriendsAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var userList:ArrayList<User>
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View?
     {
+        userList=ArrayList()
         return inflater.inflate(R.layout.fragment_friends, container, false)
     }
     private fun readUser(){
@@ -35,22 +36,26 @@ class FriendsFragment : Fragment() {
             override fun onCancelled(p0: DatabaseError) {
                 
             }
-            override fun onDataChange(p0: DataSnapshot) {
-                for (data:DataSnapshot in p0.children){
-                    val user : User? = data.getValue<User>()
-                    if (user!!.id!= firebaseUser!!.uid) {
-                        userList.add(user)
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (data:DataSnapshot in dataSnapshot.children){
+                    val user : User? = data.getValue(User::class.java)
+
+                    if (user?.id!= firebaseUser!!.uid) {
+                        if (user != null) {
+                            userList.add(user)
+                        }
                     }
+                      adapterFriends= FriendsAdapter(userList)
+                      recycler_friend.adapter=adapterFriends
                     }
-                adapterR.submitList(userList)
-                recycler.adapter=adapterR
+
             }
         })
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        recycler.layoutManager = LinearLayoutManager(context)
-        adapterR=RecyclerAdapter()
+        linearLayoutManager= LinearLayoutManager(context)
+        recycler_friend.layoutManager =linearLayoutManager
         readUser()
     }
     

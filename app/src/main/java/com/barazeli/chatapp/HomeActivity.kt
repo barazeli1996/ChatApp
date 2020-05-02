@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
           private lateinit var auth: FirebaseAuth
-
-    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.activity_home)
@@ -23,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         val viewPagerAdapter= MyViewPagerAdapter(this.supportFragmentManager)
         view_pager.adapter=viewPagerAdapter
         tabs.setupWithViewPager(view_pager)
-        auth = FirebaseAuth.getInstance()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

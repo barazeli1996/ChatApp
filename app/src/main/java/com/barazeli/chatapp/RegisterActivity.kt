@@ -35,9 +35,9 @@ class RegisterActivity : AppCompatActivity() {
                 firebaseUser=auth?.currentUser
                 val userID: String? =firebaseUser?.uid
                 val reference:DatabaseReference=FirebaseDatabase.getInstance().getReference("User")
-                    .child(userID!!)
+                    .child(userID.toString())
                 val map=HashMap<String,String>()
-                userID.let { map.put("id", it) }
+                map["id"] = userID.toString()
                 map["username"] = username
                 map["imageURL"] = "default"
                 reference.setValue(map).addOnCompleteListener {
@@ -47,13 +47,12 @@ class RegisterActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     } else{
-                        Toast.makeText(this,"Authentication Failed",Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(this,"Can't add this user",Toast.LENGTH_SHORT).show()
                     }
                 }
             }
             else{
-                Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Authentication Failed..",Toast.LENGTH_SHORT).show()
             }
         }
     }

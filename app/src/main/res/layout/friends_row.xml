@@ -6,7 +6,6 @@
     android:layout_height="90dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="@dimen/cardview_compat_inset_shadow"
-   android:layout_margin="@dimen/cardview_default_elevation"
     tools:ignore="PrivateResource">
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_height="70dp">
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-            app:toolbarId="@+id/toolbar">
  <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" >
+     android:id="@+id/toolbar"
+     android:background="@color/sign_up_btn_color"
+     android:layout_width="match_parent"
+     android:layout_height="?attr/actionBarSize" >
 
        <de.hdodenhof.circleimageview.CircleImageView
            android:id="@+id/image_friend_msg_toolbar"
@@ -28,7 +17,7 @@
            android:id="@+id/user_name_friend_toolbar"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/abdlerahman"
+           android:text="@string/abdrlrahmaan"
            android:textSize="18sp"
            android:textStyle="bold"
            android:layout_toEndOf="@id/image_friend_msg_toolbar"
@@ -36,12 +25,12 @@
            android:textColor="@color/white"
            />
  </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar"
+        android:layout_below="@+id/toolbar"
         android:id="@+id/recycler_msg"
         android:scrollbars="vertical"
         android:layout_above="@id/relative_lay"
