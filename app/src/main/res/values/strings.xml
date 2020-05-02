@@ -24,4 +24,5 @@
     <string name="search">Search</string>
     <string name="write_your_message">write your message</string>
     <string name="message">message</string>
+    <string name="hello">Hello!</string>
 </resources>

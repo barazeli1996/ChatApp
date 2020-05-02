@@ -52,7 +52,6 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             } else{
                 Glide.with(itemView.context).load(user.imageURL).into(img_freind)
             }
-          //img_freind.setImageResource(R.drawable.bara1)
             itemView.setOnClickListener {
                 val intent= Intent(itemView.context, MessageActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK)

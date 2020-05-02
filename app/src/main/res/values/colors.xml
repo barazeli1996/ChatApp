@@ -6,4 +6,7 @@
     <color name="login_btn_color">#FF5722</color>
     <color name="sign_up_btn_color">#F44336</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="back_left_color">#dae1e7</color>
+    <color name="back_right_color">#649d66</color>
 </resources>
